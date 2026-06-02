@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro'
+import { CLIENT } from '../../data/client.js'
+import { renderServicesIndex } from '../../render.js'
+
+const c = CLIENT
+const title = `Paslaugos | ${c.brand.name}`
+const description = `Visos ${c.brand.name} paslaugos ${c.brand.serviceArea}. ${c.seo.description}`
+const html = renderServicesIndex(c)
+---
+
+<Base title={title} description={description}>
+  <Fragment set:html={html} />
+</Base>

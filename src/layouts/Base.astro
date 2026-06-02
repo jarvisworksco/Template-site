@@ -1,0 +1,114 @@
+---
+import '../style.css'
+import { CLIENT } from '../data/client.js'
+import { header, footer, callBar } from '../render.js'
+
+interface Props {
+  title?: string
+  description?: string
+  canonical?: string
+}
+const { title, description, canonical } = Astro.props
+const c = CLIENT
+
+const pageTitle = title || c.seo.title
+const desc = description || c.seo.description
+const canonicalURL = new URL(canonical || Astro.url.pathname, Astro.site)
+
+// Tema
+const preset = c.theme?.preset
+const custom = c.theme?.custom
+const themeColorMap: Record<string, string> = {
+  forest: '#0B130D', steel: '#0E1418', clay: '#161210',
+  fresh: '#0F1714', volt: '#12110A', noir: '#121212',
+}
+const themeColor = custom?.bg || themeColorMap[preset] || '#0B130D'
+const customStyle = custom
+  ? Object.entries({ '--bg': custom.bg, '--ink': custom.ink, '--accent': custom.accent, '--muted': custom.muted, '--surface': custom.surface })
+      .filter(([, v]) => v)
+      .map(([k, v]) => `${k}:${v}`)
+      .join(';')
+  : undefined
+
+// JSON-LD LocalBusiness (NAP)
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: c.brand.name,
+  description: c.seo.description,
+  telephone: c.brand.phoneRaw,
+  email: c.brand.email,
+  foundingDate: String(c.brand.yearFounded),
+  areaServed: c.brand.serviceArea,
+  address: { '@type': 'PostalAddress', addressLocality: c.brand.city, addressCountry: 'LT' },
+  openingHours: c.brand.workingHours,
+  url: c.seo.url || undefined,
+}
+---
+
+<!doctype html>
+<html lang="lt" data-theme={preset} style={customStyle}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content={themeColor} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={desc} />
+    {c.seo.keywords && <meta name="keywords" content={c.seo.keywords} />}
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="lt_LT" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Šriftai: Lora (display) + Hanken Grotesk (body). Pilnai palaiko ąčęėįšųūž. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Pereiti prie turinio</a>
+
+    <div class="noise" aria-hidden="true"></div>
+
+    <div class="cursor" aria-hidden="true">
+      <span class="cursor__dot"></span>
+      <span class="cursor__ring"></span>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <div class="loader" aria-hidden="true">
+      <span class="loader__name">{c.brand.name}</span>
+    </div>
+
+    <Fragment set:html={header(c)} />
+
+    <slot />
+
+    <Fragment set:html={footer(c)} />
+    <Fragment set:html={callBar(c)} />
+
+    <button class="to-top" data-to-top aria-label="Grįžti į viršų">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 19V5" /><path d="M6 11l6-6 6 6" />
+      </svg>
+    </button>
+
+    <script>
+      import '../scripts/main.js'
+    </script>
+  </body>
+</html>

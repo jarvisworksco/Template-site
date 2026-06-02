@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro'
+import { CLIENT } from '../../data/client.js'
+import { renderServicePage, serviceSlug } from '../../render.js'
+
+export function getStaticPaths() {
+  return (CLIENT.services || []).map((service) => ({
+    params: { slug: serviceSlug(service) },
+    props: { service },
+  }))
+}
+
+const { service } = Astro.props
+const c = CLIENT
+const title = `${service.title} ${c.brand.city} | ${c.brand.name}`
+const description = `${service.title} ${c.brand.city} ir aplink. ${service.desc}`
+const html = renderServicePage(c, service)
+---
+
+<Base title={title} description={description}>
+  <Fragment set:html={html} />
+</Base>

@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro'
+import { CLIENT } from '../../data/client.js'
+import { renderAreaPage, areaSlug } from '../../render.js'
+
+export function getStaticPaths() {
+  return (CLIENT.serviceAreas || []).map((area) => ({
+    params: { miestas: areaSlug(area) },
+    props: { area },
+  }))
+}
+
+const { area } = Astro.props
+const c = CLIENT
+const term = c.seo?.localTerm || c.brand.tagline
+const title = `${term} ${area} | ${c.brand.name}`
+const description = `${term} ${area} ir aplinkiniuose rajonuose. ${c.brand.name} — atvykstam greitai, nemokamas įvertinimas.`
+const html = renderAreaPage(c, area)
+---
+
+<Base title={title} description={description}>
+  <Fragment set:html={html} />
+</Base>

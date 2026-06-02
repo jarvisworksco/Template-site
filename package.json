@@ -1,0 +1,17 @@
+{
+  "name": "paslaugu-verslo-sablonas",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Premium lietuviško paslaugų verslo svetainės šablonas (Astro). Naujam klientui keisk tik src/data/client.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.18",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.18"
+  }
+}
