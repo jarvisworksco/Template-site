@@ -7,8 +7,9 @@ interface Props {
   title?: string
   description?: string
   canonical?: string
+  hero?: boolean // true tik puslapiuose su pilno ekrano hero nuotrauka (header šviesus tekstas)
 }
-const { title, description, canonical } = Astro.props
+const { title, description, canonical, hero } = Astro.props
 const c = CLIENT
 
 const pageTitle = title || c.seo.title
@@ -19,10 +20,9 @@ const canonicalURL = new URL(canonical || Astro.url.pathname, Astro.site)
 const preset = c.theme?.preset
 const custom = c.theme?.custom
 const themeColorMap: Record<string, string> = {
-  forest: '#0B130D', steel: '#0E1418', clay: '#161210',
-  fresh: '#0F1714', volt: '#12110A', noir: '#121212',
+  forest: '#16432b', light: '#16432b', steel: '#13344a', clay: '#3a2418', noir: '#1a1a1c', dark: '#0B130D',
 }
-const themeColor = custom?.bg || themeColorMap[preset] || '#0B130D'
+const themeColor = custom?.bg || themeColorMap[preset] || '#16432b'
 const customStyle = custom
   ? Object.entries({ '--bg': custom.bg, '--ink': custom.ink, '--accent': custom.accent, '--muted': custom.muted, '--surface': custom.surface })
       .filter(([, v]) => v)
@@ -78,7 +78,7 @@ const jsonld = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
   </head>
 
-  <body>
+  <body class={hero ? 'has-hero' : undefined}>
     <a class="skip-link" href="#main">Pereiti prie turinio</a>
 
     <div class="noise" aria-hidden="true"></div>

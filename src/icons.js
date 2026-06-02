@@ -23,4 +23,8 @@ export const ICONS = {
   instagram: I('<rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.5" cy="7.5" r="0.6" fill="currentColor"/>'),
 }
 
+// Spalvotas Google „G" logotipas (atsiliepimų kortelėms)
+ICONS.google =
+  '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M44.5 20H24v8.5h11.8C34.7 33.9 30 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.3 0 6.3 1.2 8.6 3.3l6-6C41.1 4.8 32.9 1 24 1 11.3 1 1 11.3 1 24s10.3 23 23 23c11.5 0 22-8.3 22-23 0-1.4-.2-2.7-.5-4z"/><path fill="#34A853" d="M6.3 14.7l7 5.1C15.1 16 19.2 13 24 13c3.3 0 6.3 1.2 8.6 3.3l6-6C34.9 6.5 29.7 4.5 24 4.5 16.1 4.5 9.2 8.9 6.3 14.7z" opacity="0"/></svg>'
+
 export const icon = (name) => ICONS[name] || ''

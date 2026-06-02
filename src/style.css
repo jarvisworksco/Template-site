@@ -6,30 +6,43 @@
 
 /* ── 1. TEMOS (presetai) ─────────────────────────────────────────────────── */
 :root {
-  /* Numatytoji „forest" landscaping paletė — ryškus žalias akcentas + cream antrinis */
-  --bg: #0b130d; --ink: #f3f8ed; --accent: #8fe04a; --accent-2: #ecdcae;
-  --muted: #9aac90; --surface: #16231a;
+  /* Numatytoji: SODRI ŽALIA (kaip glass mėlyna) — pripildyta, suprojektuota, ne juoda */
+  --bg: #16432b;        /* sodrus miško žalumas (NE beveik juoda) */
+  --ink: #eef4ea;        /* šviesus tekstas ant žalio */
+  --accent: #e2b34c;     /* šiltas auksinis (kaip glass) */
+  --accent-2: #ffffff;
+  --muted: #a7bca4;      /* šviesus žalsvai pilkas */
   --maxw: 1200px;
   --pad: clamp(1.25rem, 4vw, 3rem);
-  --radius: 16px;
+  --radius: 14px;
   --font-display: 'Lora', Georgia, serif;
   --font-body: 'Hanken Grotesk', system-ui, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
-[data-theme='forest'] { --bg:#0B130D; --ink:#F3F8ED; --accent:#8FE04A; --accent-2:#ECDCAE; --muted:#9AAC90; --surface:#16231A; }
-[data-theme='steel']  { --bg:#0E1418; --ink:#EDF2F4; --accent:#3AA7C2; --accent-2:#D7E3E7; --muted:#6B7C84; --surface:#16202A; }
-[data-theme='clay']   { --bg:#161210; --ink:#F4EFE9; --accent:#D9763C; --accent-2:#E7D2B8; --muted:#857469; --surface:#211A16; }
-[data-theme='fresh']  { --bg:#0F1714; --ink:#EEF5F1; --accent:#4CB78A; --accent-2:#D9E8DF; --muted:#6E8076; --surface:#16211D; }
-[data-theme='volt']   { --bg:#12110A; --ink:#F5F2E6; --accent:#E7C229; --accent-2:#E9E2C2; --muted:#82806A; --surface:#1C1A12; }
-[data-theme='noir']   { --bg:#121212; --ink:#F0EDE8; --accent:#B89B6E; --accent-2:#DCD6CC; --muted:#7A766F; --surface:#1C1B1A; }
-
-/* spalvos pagalbiniai */
 :root {
-  --ink-soft: color-mix(in oklab, var(--ink) 84%, var(--bg));
+  --bg-alt: #123c26;              /* alternatyvus (tamsesnis) sekcijų fonas — ritmui */
+  --surface: #1d5436;            /* žalios kortelės (kiek šviesesnės už bg) */
+  --card: #ffffff;               /* BALTOS kortelės (atsiliepimai ir kt.) */
+  --card-ink: #15211a;           /* tamsus tekstas baltose kortelėse */
+  --card-muted: #5f6b5d;
+  --ink-soft: color-mix(in oklab, var(--ink) 82%, var(--bg));
   --line: color-mix(in oklab, var(--ink) 16%, transparent);
-  --accent-soft: color-mix(in oklab, var(--accent) 20%, transparent);
-  --accent-ink: #0a1207; /* tamsus tekstas ant ryškaus akcento mygtukų */
+  --accent-soft: color-mix(in oklab, var(--accent) 18%, transparent);
+  --accent-ink: #14301d;          /* tamsus tekstas ant auksinio mygtuko */
+  --shadow: 0 22px 50px -24px rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 10px 26px -14px rgba(0, 0, 0, 0.35);
+  --on-image: #ffffff;
+  --on-image-soft: rgba(255, 255, 255, 0.88);
+  --cta-bg: #0f3322;              /* tamsesnis CTA blokas */
 }
+
+/* Pasirenkamos paletės (keisk bg/accent) */
+[data-theme='forest'] { } /* numatytoji */
+[data-theme='steel']  { --bg:#13344a; --bg-alt:#0f2c40; --surface:#1b4060; --accent:#e2b34c; --cta-bg:#0d2638; }
+[data-theme='clay']   { --bg:#3a2418; --bg-alt:#301c12; --surface:#4a3120; --accent:#e0a24a; --cta-bg:#291810; }
+[data-theme='noir']   { --bg:#1a1a1c; --bg-alt:#141416; --surface:#26262a; --accent:#c8a45f; --cta-bg:#101012; }
+/* Tamsi (beveik juoda) — premium variantas, jei kas norės */
+[data-theme='dark']   { --bg:#0B130D; --bg-alt:#070d09; --surface:#16231A; --accent:#8FE04A; --accent-ink:#0a1207; --cta-bg:#070d09; }
 
 /* ── 2. RESET ─────────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -297,14 +310,19 @@ body.nav-locked { overflow: hidden; }
 .reviews__more { display: flex; justify-content: center; margin-top: clamp(1.5rem, 3vw, 2.5rem); }
 .review {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 2rem; display: flex; flex-direction: column; gap: 1rem;
+  padding: 1.75rem; display: flex; flex-direction: column; gap: 0.9rem;
 }
-.review__stars { display: inline-flex; gap: 0.15rem; color: var(--accent); }
+.review__head { display: flex; align-items: center; gap: 0.6rem; }
+.review__rating { font-weight: 700; font-size: 1.05rem; color: var(--ink); }
+.review__stars { display: inline-flex; gap: 0.12rem; color: #f5b400; }
 .review__stars svg { width: 1.05rem; height: 1.05rem; }
-.review__text { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.4; }
-.review__meta { display: flex; flex-direction: column; margin-top: auto; }
+.review__text { font-size: 1rem; line-height: 1.6; color: var(--ink-soft); }
+.review__meta { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 0.4rem; }
+.review__meta > div { display: flex; flex-direction: column; }
 .review__name { font-weight: 600; }
-.review__sub { color: var(--muted); font-size: 0.85rem; }
+.review__sub { color: var(--muted); font-size: 0.82rem; }
+.review__g { flex-shrink: 0; }
+.review__g svg { width: 26px; height: 26px; }
 
 /* FAQ */
 .acc__item { border-bottom: 1px solid var(--line); }
@@ -677,15 +695,21 @@ body.nav-locked { overflow: hidden; }
 .caside__quote .btn { width: max-content; }
 
 /* Atsiliepimų „gate" (žvaigždutės) */
-.rgate { margin-top: clamp(2rem, 4vw, 3rem); text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.6rem, 3vw, 2.4rem); }
-.rgate__title { font-family: var(--font-display); font-size: clamp(1.2rem, 2vw, 1.5rem); margin-bottom: 1rem; }
+.rgate {
+  margin: clamp(2.5rem, 5vw, 4rem) auto 0; max-width: 540px; text-align: center;
+  background: var(--cta-bg); border: 1px solid color-mix(in oklab, #fff 12%, transparent);
+  border-radius: var(--radius); padding: clamp(1.8rem, 3.5vw, 2.6rem); box-shadow: var(--shadow);
+}
+.rgate__g { display: inline-flex; margin-bottom: 0.8rem; }
+.rgate__g svg { width: 34px; height: 34px; }
+.rgate__title { color: #fff; font-family: var(--font-display); font-size: clamp(1.25rem, 2.2vw, 1.6rem); margin-bottom: 1rem; }
 .rgate__stars { display: inline-flex; gap: 0.4rem; }
-.rgate__star { color: var(--muted); transition: color 0.15s, transform 0.15s; line-height: 0; }
-.rgate__star svg { width: 2rem; height: 2rem; }
+.rgate__star { color: rgba(255,255,255,0.3); transition: color 0.15s, transform 0.15s; line-height: 0; }
+.rgate__star svg { width: 2.1rem; height: 2.1rem; }
 .rgate__star:hover { transform: scale(1.15); }
-.rgate__star.is-on { color: var(--accent); }
-.rgate__hint { color: var(--ink-soft); font-size: 0.92rem; margin-top: 0.9rem; min-height: 1.3em; }
-.rgate__hint a { color: var(--accent); text-decoration: underline; }
+.rgate__star.is-on { color: #f5b400; }
+.rgate__hint { color: rgba(255,255,255,0.7); font-size: 0.92rem; margin-top: 0.9rem; min-height: 1.3em; }
+.rgate__hint a { color: #7fe491; text-decoration: underline; }
 
 /* Vietovės: žemėlapis + sąrašas */
 .areas__layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: stretch; }
@@ -699,3 +723,78 @@ body.nav-locked { overflow: hidden; }
   .contact__details { grid-template-columns: 1fr; }
   .areas__layout { grid-template-columns: 1fr; }
 }
+
+/* ============================================================================
+   12. ŠVIESIOS TEMOS KOMPONENTŲ PATAISYMAI
+   ============================================================================ */
+
+/* Noise — šviesiame fone nereikia */
+.noise { display: none; }
+
+/* Skip-link tekstas */
+.skip-link { color: var(--accent-ink); }
+
+/* ── Header: virš hero (home) = šviesus tekstas; po scroll = tamsus ───────── */
+.has-hero .header:not(.is-scrolled) .brand__name,
+.has-hero .header:not(.is-scrolled) .nav__list a,
+.has-hero .header:not(.is-scrolled) .header__phone { color: var(--on-image); }
+.has-hero .header:not(.is-scrolled) .brand__tag { color: var(--on-image-soft); }
+.has-hero .header:not(.is-scrolled) .nav__list a::after { background: var(--on-image); }
+.has-hero .header:not(.is-scrolled) .nav__toggle { border-color: rgba(255,255,255,0.4); }
+.has-hero .header:not(.is-scrolled) .nav__toggle span { background: var(--on-image); }
+
+/* ── Hero: tekstas virš nuotraukos ─────────────────────────────────────────── */
+.hero__scrim { background: linear-gradient(180deg, rgba(8,18,11,0.5) 0%, rgba(8,18,11,0.34) 42%, rgba(8,18,11,0.66) 100%); }
+.hero__headline { color: var(--on-image); }
+.hero .accent { color: #7fe491; }
+.hero__sub { color: var(--on-image-soft); }
+.hero__eyebrow { color: #cfe8b8; }
+.hero__emergency { color: var(--on-image-soft); border-color: rgba(255,255,255,0.25); }
+.hero__cta .btn--ghost { border-color: rgba(255,255,255,0.55); color: #fff; }
+.hero__cta .btn--ghost:hover { background: rgba(255,255,255,0.14); color: #fff; border-color: #fff; }
+.hero__scroll { background: rgba(255,255,255,0.3); }
+
+/* Hero „glass" badge'ai virš nuotraukos */
+.hbadge { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+.hbadge__title { color: #fff; }
+.hbadge__desc { color: rgba(255,255,255,0.72); }
+.hbadge__icon { background: rgba(255,255,255,0.16); color: #fff; }
+
+/* Hero forma — pilna BALTA kortelė su tamsiu tekstu */
+.qform { background: var(--card); color: var(--card-ink); backdrop-filter: none; box-shadow: var(--shadow); border-color: rgba(0,0,0,0.06); }
+.qform__title { color: var(--card-ink); }
+.qform__note { color: var(--card-muted); }
+.qform .cfield input, .qform .cfield textarea { background: #f3f5f1; border-color: rgba(0,0,0,0.12); color: var(--card-ink); }
+.qform .cfield input::placeholder, .qform .cfield textarea::placeholder { color: #8a948a; }
+
+/* ── BALTOS atsiliepimų kortelės (Google stilius) ─────────────────────────── */
+.review { background: var(--card); color: var(--card-ink); border-color: rgba(0,0,0,0.06); }
+.review__rating, .review__name { color: var(--card-ink); }
+.review__text { color: #3c463b; }
+.review__sub { color: var(--card-muted); }
+
+/* Kortelių šešėliai */
+.service, .gcard, .review, .caside__card, .caside__urgent, .caside__quote,
+.cinfo, .qform, .about__frame, .ba__slider, .areas__map { box-shadow: var(--shadow-sm); }
+.service:hover, .gcard:hover { box-shadow: var(--shadow); }
+.service__media img { filter: none; }
+.gcard__media img { filter: none; }
+
+/* Žemėlapis — šviesus (kaip glass) */
+.areas__map iframe { filter: none; }
+
+/* ── Sekcijų ritmas — kintantis fonas (kad nebūtų vienas plokščias) ─────────── */
+.about, .gallery, .faq, .contact { background: var(--bg-alt); }
+
+/* ── CTA juosta — tamsesnis blokas, auksiniai akcentai ─────────────────────── */
+.cta { background: var(--cta-bg); border-block-color: transparent; }
+.cta__glow { background: radial-gradient(60% 80% at 50% 0%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 70%); }
+.cta__eyebrow { color: var(--accent); }
+.cta__title { color: #fff; }
+.cta__phone { color: var(--accent); }
+.cta__phone:hover { color: color-mix(in oklab, var(--accent) 80%, #fff); }
+.cta__meta { color: rgba(255,255,255,0.82); }
+.cta__meta svg { color: var(--accent); }
+
+/* Header scrolled fonas */
+.header.is-scrolled { background: color-mix(in oklab, var(--bg) 86%, transparent); }

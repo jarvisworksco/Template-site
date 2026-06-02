@@ -54,11 +54,11 @@ export const CLIENT = {
   },
 
   // ── Tema ──────────────────────────────────────────────────────────────────
-  // preset: forest | steel | clay | fresh | volt | noir (žr. src/style.css presetus)
-  // Custom: { bg, ink, accent, muted, surface }
+  // Sodrios spalvotos: forest (žalia) | steel (mėlyna) | clay (oranžinė) | noir
+  // Premium beveik juoda: dark
   theme: {
     preset: "forest",
-    // custom: { bg: "#0E1711", ink: "#EFF3EA", accent: "#84B26A", muted: "#889A80", surface: "#17231A" },
+    // custom: { bg, "bg-alt", surface, ink, accent, muted }
   },
 
   // ── Hero ──────────────────────────────────────────────────────────────────

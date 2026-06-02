@@ -365,11 +365,17 @@ function reviews(c) {
     .map(
       (r, i) => `
       <article class="review reveal ${i >= REVIEWS_INITIAL ? 'review--extra' : ''}" style="--d:${(i % 3) * 0.06}s">
-        <div class="review__stars" aria-label="Įvertinimas ${r.rating} iš 5">${stars(r.rating)}</div>
+        <div class="review__head">
+          <span class="review__rating">${String(r.rating).replace('.', ',')}</span>
+          <div class="review__stars" aria-label="Įvertinimas ${r.rating} iš 5">${stars(r.rating)}</div>
+        </div>
         <blockquote class="review__text">${esc(r.text)}</blockquote>
         <footer class="review__meta">
-          <span class="review__name">${esc(r.name)}</span>
-          <span class="review__sub">${esc(r.city)} · ${esc(r.service)}</span>
+          <div>
+            <span class="review__name">${esc(r.name)}</span>
+            <span class="review__sub">${esc(r.city)} · ${esc(r.service)}</span>
+          </div>
+          <span class="review__g" aria-label="Google atsiliepimas">${icon('google')}</span>
         </footer>
       </article>`
     )
@@ -380,10 +386,11 @@ function reviews(c) {
           <span data-more-label>Žiūrėti daugiau (${c.reviews.length - REVIEWS_INITIAL})</span>
         </button></div>`
       : ''
-  // Atsiliepimų „gate": 4–5★ -> Google atsiliepimas; 1–3★ -> privatus susisiekimas.
+  // „Palikite atsiliepimą" blokas su gate: 4–5★ -> Google; 1–3★ -> „Ačiū".
   const gate = c.brand.googleReviewUrl
     ? `<div class="rgate reveal" data-rgate data-url="${esc(c.brand.googleReviewUrl)}">
-        <p class="rgate__title">Naudojotės mūsų paslaugomis? Įvertinkite mus</p>
+        <span class="rgate__g">${icon('google')}</span>
+        <p class="rgate__title">Palikite mums atsiliepimą Google</p>
         <div class="rgate__stars" role="group" aria-label="Įvertinimas žvaigždutėmis">
           ${[1, 2, 3, 4, 5]
             .map((n) => `<button type="button" class="rgate__star" data-star="${n}" aria-label="${n} iš 5">${icon('star')}</button>`)
@@ -397,7 +404,7 @@ function reviews(c) {
     <div class="container">
       <header class="section__head">
         <p class="section__eyebrow reveal">Klientų balsai</p>
-        <h2 class="section__title" id="reviews-title" data-words>Ką sako žmonės</h2>
+        <h2 class="section__title" id="reviews-title" data-words>Ką sako mūsų klientai</h2>
       </header>
       <div class="reviews__grid" data-reviews-grid>${cards}</div>
       ${moreBtn}
