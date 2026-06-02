@@ -66,7 +66,7 @@ ul, ol { list-style: none; }
 
 /* ── 3. TIPOGRAFIJA ───────────────────────────────────────────────────────── */
 h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.12; letter-spacing: -0.02em; }
-.section__title { font-size: clamp(2rem, 4vw, 3.5rem); }
+.section__title { font-size: clamp(2rem, 4vw, 3.4rem); font-family: var(--font-body); font-weight: 800; letter-spacing: -0.015em; line-height: 1.08; }
 .accent { color: var(--accent); font-style: italic; }
 
 /* ── 4. LAYOUT ────────────────────────────────────────────────────────────── */
@@ -75,8 +75,10 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 .section { padding-block: clamp(4rem, 9vw, 8rem); }
 .section__head { max-width: 42ch; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
 .section__eyebrow {
-  font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--accent); font-weight: 600; margin-bottom: 0.9rem;
+  display: inline-block; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 1.1rem;
+  background: rgba(0,0,0,0.22); padding: 0.5rem 0.95rem; border-radius: 100px;
+  border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent);
 }
 
 .skip-link {
@@ -798,3 +800,8 @@ body.nav-locked { overflow: hidden; }
 
 /* Header scrolled fonas */
 .header.is-scrolled { background: color-mix(in oklab, var(--bg) 86%, transparent); }
+
+/* Banguoti sekcijų skirtukai (glass stilius) */
+.wave { line-height: 0; background: var(--up); }
+.wave svg { display: block; width: 100%; height: clamp(38px, 5vw, 70px); }
+.wave svg path { fill: var(--wf); }

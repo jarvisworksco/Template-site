@@ -634,6 +634,11 @@ function callBar(c) {
 // ── Chrome eksportai (naudoja Astro Base layout'as visuose puslapiuose) ──────
 export { header, footer, callBar }
 
+// Banguotas sekcijų skirtukas (glass stilius). up = viršutinės sekcijos spalva, low = apatinės.
+function wave(up, low) {
+  return `<div class="wave" aria-hidden="true" style="--up:${up};--wf:${low}"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,30 C300,72 700,2 1040,26 C1240,38 1360,54 1440,34 L1440,70 L0,70 Z"/></svg></div>`
+}
+
 // ── HOME puslapio turinys (be header/footer — juos prideda layout'as) ────────
 export function renderHome(c) {
   return [
@@ -649,7 +654,9 @@ export function renderHome(c) {
     beforeAfter(c),
     reviews(c),
     faq(c),
+    wave('var(--bg-alt)', 'var(--cta-bg)'),
     ctaBand(c),
+    wave('var(--cta-bg)', 'var(--bg-alt)'),
     contact(c),
     `</main>`,
   ].join('\n')
