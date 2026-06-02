@@ -241,9 +241,14 @@ export const CLIENT = {
   ],
 
   // ── Prieš / Po galerija ───────────────────────────────────────────────────
-  // Tuščia = sekcija nerodoma. Įdėk, kai turėsi tikrą „prieš" ir „po" nuotraukų porą:
-  // { before: "/images/ba1-pries.jpg", after: "/images/ba1-po.jpg", label: "Sklypo tvarkymas" }
-  beforeAfter: [],
+  // Vėliau pakeisk realia kliento „prieš" ir „po" nuotraukų pora (vienodų matmenų).
+  beforeAfter: [
+    {
+      before: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=1600&q=70&sat=-100", // KEISTI: „prieš" (nespalvota)
+      after: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=1600&q=70",          // KEISTI: „po" (spalvota)
+      label: "Apleisto sklypo tvarkymas",
+    },
+  ],
 
   // ── Recenzijos ────────────────────────────────────────────────────────────
   reviews: [
