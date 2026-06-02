@@ -69,7 +69,7 @@ export const CLIENT = {
     sub: "Avarinis medžių pjovimas, genėjimas ir aplinkos tvarkymas. Su draudimu, profesionalia įranga ir alpinistine technika — atvykstam per 24 valandas.",
     ctaPrimary: "Gauti pasiūlymą",
     ctaSecondary: "Žiūrėti darbus",
-    bgImage: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=75", // PALIK kaip yra (aukšta rezoliucija); keisk tik jei klientas turi savo hero nuotrauką
+    bgImage: "/images/hero.jpg", // kliento hero nuotrauka (optimizuota)
     // Hero „glass" pasitikėjimo kortelės (po CTA). Tuščias masyvas = nerodoma.
     badges: [
       { icon: "certificate", title: "Sertifikuota įmonė", desc: "Profesionalus ir atsakingas požiūris" },
@@ -110,43 +110,56 @@ export const CLIENT = {
       desc: "Pavojingų, nudžiūvusių ar nuvirtusių medžių šalinimas sudėtingomis sąlygomis — net tarp pastatų ir laidų.",
       price: "nuo 45€",
       unit: "už val.",
-      image: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=70", // KEISTI: kliento nuotrauka
-      featured: true,
+      image: "/images/avarinis-medziu-pjovimas.jpg",
     },
     {
-      title: "Medžių genėjimas",
-      desc: "Formuojamasis ir sanitarinis genėjimas, kuris pratęsia medžio gyvenimą ir saugumą.",
+      title: "Vaismedžių genėjimas",
+      desc: "Obelų, kriaušių ir kitų vaismedžių formavimas bei genėjimas — sveikatai, derliui ir gražiai formai.",
       price: "nuo 35€",
       unit: "už val.",
-      image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=70", // KEISTI: kliento nuotrauka
+      image: "/images/vaismedziu-pjovimas.jpg",
     },
     {
-      title: "Alpinistinis pjovimas",
-      desc: "Darbas su virvėmis ten, kur nepravažiuoja technika. Aukščio darbai be žalos aplinkai.",
-      price: "nuo 60€",
+      title: "Tujų ir gyvatvorių trumpinimas",
+      desc: "Tujų, gyvatvorių ir dekoratyvinių krūmų lyginimas bei trumpinimas — tvarkinga ir vienoda forma.",
+      price: "nuo 30€",
       unit: "už val.",
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=70", // KEISTI: kliento nuotrauka
+      image: "/images/tuju-gyvatvoriu-trumpinimas.jpg",
     },
     {
       title: "Kelmų frezavimas",
       desc: "Kelmų pašalinimas frezavimo būdu — sklypas paruošiamas naujiems sodinukams ar vejai.",
       price: "nuo 25€",
       unit: "už kelmą",
-      image: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=1200&q=70", // KEISTI: kliento nuotrauka
+      image: "/images/kelmu-frezavimas.jpg",
     },
     {
-      title: "Sklypo išvalymas",
-      desc: "Apleistų sklypų, krūmynų ir savaiminukų tvarkymas. Paliekame paruoštą, švarią teritoriją.",
+      title: "Apleistų sklypų tvarkymas",
+      desc: "Krūmynų, savaiminukų ir užaugusių sklypų išvalymas. Paliekame paruoštą, švarią teritoriją.",
       price: "pagal sutartį",
       unit: "",
-      image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=70", // KEISTI: kliento nuotrauka
+      image: "/images/apleistu-sklypu-tvarkymas.jpg",
     },
     {
-      title: "Šakų išvežimas",
-      desc: "Surenkame ir išvežame visas atliekas — jokio šiukšlių kalno jūsų kieme.",
-      price: "nuo 30€",
-      unit: "už reisą",
-      image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=70", // KEISTI: kliento nuotrauka
+      title: "Vejos pjovimas",
+      desc: "Vejos trumpinimas ir priežiūra — reguliariai arba vienkartinai, didelėms ir mažoms teritorijoms.",
+      price: "nuo 15€",
+      unit: "už val.",
+      image: "/images/vejos-trumpinimas.jpg",
+    },
+    {
+      title: "Malkų skaldymas",
+      desc: "Malkų pjovimas ir skaldymas jūsų kieme — paruošiame kūrenimui patogaus dydžio malkas.",
+      price: "nuo 20€",
+      unit: "už m³",
+      image: "/images/malku-skaldymas.jpg",
+    },
+    {
+      title: "Malkų pardavimas",
+      desc: "Sausos, paruoštos kūrenti malkos su pristatymu. Įvairios medienos rūšys pagal poreikį.",
+      price: "pagal kiekį",
+      unit: "",
+      image: "/images/malku-pardavimas.jpg",
     },
   ],
 
@@ -156,17 +169,17 @@ export const CLIENT = {
     text: "Aukštaitijos Arboristai — patikima medžių pjovimo ir priežiūros komanda, dirbanti Vilniuje ir aplinkiniuose rajonuose. Su daugiau nei devynerių metų patirtimi ir profesionalia įranga garantuojame saugumą bei tvarką.",
     text2: "Kiekvieną darbą vykdome atsakingai: įvertiname riziką, dirbame su draudimu ir po savęs paliekame sutvarkytą aplinką.",
     images: [
-      "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1000&q=70", // KEISTI: kliento nuotrauka
-      "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1000&q=70", // KEISTI: kliento nuotrauka
-      "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1000&q=70", // KEISTI: kliento nuotrauka
+      "/images/avarinis-medziu-pjovimas.jpg",
+      "/images/kelmu-frezavimas.jpg",
+      "/images/vaismedziu-pjovimas.jpg",
     ],
     values: [
       "Avarinis medžių pjovimas",
-      "Medžių priežiūra ir genėjimas",
-      "Alpinistinė technika",
-      "Sudėtingų darbų specialistai",
+      "Vaismedžių ir gyvatvorių priežiūra",
+      "Kelmų frezavimas",
+      "Apleistų sklypų tvarkymas",
+      "Malkų skaldymas ir pardavimas",
       "Greitoji pagalba 24/7",
-      "Saugus ir kokybiškas darbas",
     ],
     ctaPrimary: "Susisiekti su komanda",
     ctaSecondary: "Mūsų paslaugos",
@@ -184,39 +197,39 @@ export const CLIENT = {
   gallery: [
     {
       category: "Avarinis pjovimas",
-      title: "Medžio šalinimas sudėtingoje vietoje",
+      title: "Pavojingo medžio šalinimas",
       desc: "Grėsmingo medžio šalinimas su profesionalia įranga ir griežtais saugos standartais.",
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=70", // KEISTI: kliento nuotrauka
-    },
-    {
-      category: "Alpinistika",
-      title: "Šakų pjovimas dideliame aukštyje",
-      desc: "Eksperto darbas su virvėmis ten, kur nepravažiuoja technika.",
-      image: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1000&q=70&crop=top", // KEISTI: kliento nuotrauka
-    },
-    {
-      category: "Avarinis pjovimas",
-      title: "Medžio šalinimas šalia pastatų",
-      desc: "Sudėtingas darbas šalia statinių — reikalinga patirtis ir dėmesys detalėms.",
-      image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1000&q=70", // KEISTI: kliento nuotrauka
+      image: "/images/avarinis-medziu-pjovimas.jpg",
     },
     {
       category: "Genėjimas",
-      title: "Sodo medžių formavimas",
-      desc: "Obelų ir vyšnių genėjimas — sveikatai ir derliui.",
-      image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1000&q=70", // KEISTI: kliento nuotrauka
+      title: "Vaismedžių formavimas",
+      desc: "Obelų ir kriaušių genėjimas — sveikatai, derliui ir gražiai formai.",
+      image: "/images/vaismedziu-pjovimas.jpg",
+    },
+    {
+      category: "Gyvatvorės",
+      title: "Tujų ir gyvatvorių lyginimas",
+      desc: "Tvarkinga, vienoda gyvatvorių forma — kruopščiai ir tolygiai.",
+      image: "/images/tuju-gyvatvoriu-trumpinimas.jpg",
+    },
+    {
+      category: "Kelmų frezavimas",
+      title: "Kelmų šalinimas frezavimu",
+      desc: "Sklypas paruoštas naujiems sodinukams ar vejai — be kelmų likučių.",
+      image: "/images/kelmu-frezavimas.jpg",
     },
     {
       category: "Aplinkos tvarkymas",
       title: "Apleisto sklypo išvalymas",
       desc: "Krūmynų ir savaiminukų šalinimas — sklypas paruoštas naudojimui.",
-      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=70", // KEISTI: kliento nuotrauka
+      image: "/images/apleistu-sklypu-tvarkymas.jpg",
     },
     {
-      category: "Avarinis pjovimas",
-      title: "Pavojingas medis prie elektros laidų",
-      desc: "Darbas šalia elektros linijų — ypatingas dėmesys saugai.",
-      image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=70", // KEISTI: kliento nuotrauka
+      category: "Malkos",
+      title: "Malkų pjovimas ir skaldymas",
+      desc: "Paruošiame kūrenimui patogaus dydžio malkas jūsų kieme.",
+      image: "/images/malku-skaldymas.jpg",
     },
   ],
 
@@ -228,13 +241,9 @@ export const CLIENT = {
   ],
 
   // ── Prieš / Po galerija ───────────────────────────────────────────────────
-  beforeAfter: [
-    {
-      before: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=1600&q=70&sat=-100", // KEISTI: kliento nuotrauka („prieš" — nespalvota)
-      after: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=1600&q=70",          // KEISTI: kliento nuotrauka („po" — spalvota)
-      label: "Apleisto sklypo tvarkymas",
-    },
-  ],
+  // Tuščia = sekcija nerodoma. Įdėk, kai turėsi tikrą „prieš" ir „po" nuotraukų porą:
+  // { before: "/images/ba1-pries.jpg", after: "/images/ba1-po.jpg", label: "Sklypo tvarkymas" }
+  beforeAfter: [],
 
   // ── Recenzijos ────────────────────────────────────────────────────────────
   reviews: [
@@ -250,23 +259,23 @@ export const CLIENT = {
       name: "Mindaugas",
       city: "Trakai",
       rating: 5,
-      service: "Alpinistinis pjovimas",
-      text: "Reikėjo nupjauti pušį tarp namo ir kaimyno garažo. Padarė su virvėmis, be jokios žalos. Profesionalų darbas.",
+      service: "Tujų ir gyvatvorių trumpinimas",
+      text: "Sutvarkė ilgą tujų gyvatvorę — dabar lygi ir tvarkinga. Greitai, švariai, ir po savęs viską susitvarkė.",
       date: "2025-03",
     },
     {
       name: "Rasa",
       city: "Vilnius",
       rating: 5,
-      service: "Medžių genėjimas",
-      text: "Sutvarkė visą sodą — obelis, vyšnias ir gyvatvorę. Konsultavo, ką ir kada geriausia genėti. Rekomenduoju.",
+      service: "Vaismedžių genėjimas",
+      text: "Sutvarkė visą sodą — obelis, kriaušes ir vyšnias. Konsultavo, ką ir kada geriausia genėti. Rekomenduoju.",
       date: "2025-02",
     },
     {
       name: "Darius",
       city: "Elektrėnai",
       rating: 5,
-      service: "Sklypo išvalymas",
+      service: "Apleistų sklypų tvarkymas",
       text: "Naujai pirktas sklypas buvo visiškai apaugęs. Per dvi dienas paruošė statyboms. Kaina aiški iš anksto, jokių staigmenų.",
       date: "2025-01",
     },
