@@ -629,10 +629,9 @@ body.nav-locked { overflow: hidden; }
 .reviews__more { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
 
 /* ── Footer vietovių eilutė ────────────────────────────────────────────────── */
-.footer__areas { margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); line-height: 2; }
-.footer__areas-label { color: var(--ink-soft); font-weight: 600; margin-right: 0.4rem; }
+.footer__areas { margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.7rem; }
+.footer__areas-label { color: var(--ink-soft); font-weight: 600; width: 100%; }
 .footer__areas a { color: var(--muted); transition: color 0.2s; }
-.footer__areas a:not(:last-child)::after { content: '·'; margin: 0 0.5rem; color: var(--line); }
 .footer__areas a:hover { color: var(--accent); }
 
 /* ── Sub-puslapiai (paslaugos/, vietoves/) ─────────────────────────────────── */
